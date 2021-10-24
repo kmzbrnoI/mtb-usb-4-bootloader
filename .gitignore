@@ -16,3 +16,4 @@ openocd.cfg
 *.sublime-workspace
 
 .vscode
+CMSIS

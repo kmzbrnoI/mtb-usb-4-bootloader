@@ -72,7 +72,7 @@ LDSCRIPT    = $(FWODIR)/script.ld
 #passing DFU related variables
 USERDEFS = $(foreach v,$(filter DFU_%,$(.VARIABLES)),$(v)=$($(v)) )
 
-all: bootloader crypter
+all: mtbusb crypter
 
 program_stcube: $(OUTDIR)/$(FWNAME).hex
 	$(STPROG_CLI) -c port=SWD reset=HWrst -d $< -hardRst
@@ -404,6 +404,12 @@ stm32f103x8 :
 	$(MAKE) bootloader FWCPU='-mcpu=cortex-m3' \
 	                   FWSTARTUP='mcu/stm32f103.S' \
 	                   FWDEFS='STM32F1 STM32F103x6 USBD_ASM_DRIVER' \
+	                   LDPARAMS='ROMLEN=64K RAMLEN=20K'
+
+mtbusb:  # stm32f103x8
+	$(MAKE) bootloader FWCPU='-mcpu=cortex-m3' \
+	                   FWSTARTUP='mcu/stm32f103.S' \
+	                   FWDEFS='STM32F1 STM32F103x6 USBD_ASM_DRIVER USBD_DP_PORT=GPIOA USBD_DP_PIN=10 DFU_USER_CONFIG=userconfig.h' \
 	                   LDPARAMS='ROMLEN=64K RAMLEN=20K'
 
 stm32f103xb :

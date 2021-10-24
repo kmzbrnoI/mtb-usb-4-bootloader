@@ -1,3 +1,6 @@
+MTB-USB v4 bootloader
+=====================
+
 ![LNX build](https://github.com/dmitrystu/sboot_stm32/workflows/LNX%20build/badge.svg)
 ![WIN build](https://github.com/dmitrystu/sboot_stm32/workflows/WIN%20build/badge.svg)
 ![OSX build](https://github.com/dmitrystu/sboot_stm32/workflows/OSX%20build/badge.svg)
@@ -65,7 +68,7 @@ The bootloader can be configured through the make parameters. See CONFIG.md for 
 + optional [st-util](https://github.com/texane/stlink) tool to program bootloader
 2. Makefile targets
 + **make prerequisites** to download required libs and headers
-+ **make mcu_target** to build bootloader
++ **make mtbusb** to build bootloader
 + **make program** to flash bootloader using st-flash
 + **make crypter** to build encryption software
 3. Makefile and environmental variables
